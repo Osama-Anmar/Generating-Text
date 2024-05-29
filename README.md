@@ -17,7 +17,7 @@ This Project Using Tensorflow To Generating Text
 **Text Nomalization (Arabic & English):**
  *Contraction Expand*<br />
  *Remove Punctuations*<br />
- *Remove Single Letter**<br />
+ *Remove Single Letter*<br />
  *Remove Some Special Character And Unicode*<br />
 
  
