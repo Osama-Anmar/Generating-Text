@@ -8,17 +8,17 @@ This Project Using Tensorflow To Generating Text
 **GRU**<br />
 
 # Libraries
-**Tensorflow**
-**Matplolib**
-**Numpy**
-**re**
+**Tensorflow**<br />
+**Matplolib**<br />
+**Numpy**<br />
+**re**<br />
 
 # Files
 **Text Nomalization (Arabic & English):**
- *Contraction Expand*
- *Remove Punctuations*
- *Remove Single Letter**
- *Remove Some Special Character And Unicode*
+ *Contraction Expand*<br />
+ *Remove Punctuations*<br />
+ *Remove Single Letter**<br />
+ *Remove Some Special Character And Unicode*<br />
 
  
 
