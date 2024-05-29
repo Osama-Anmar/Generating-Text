@@ -2,9 +2,9 @@
 This Project Using Tensorflow To Generating Text
 
 # Technique Used
-**N-Grams**
-**LSTM**
-**Bidirectional LSTM**
+**N-Grams**<\br>
+**LSTM**<\br>
+**Bidirectional LSTM**<\br>
 **GRU**
 
 # Libraries
