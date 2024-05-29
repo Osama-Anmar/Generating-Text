@@ -2,10 +2,10 @@
 This Project Using Tensorflow To Generating Text
 
 # Technique Used
-**N-Grams**<\br>
-**LSTM**<\br>
-**Bidirectional LSTM**<\br>
-**GRU**
+**N-Grams**<br />
+**LSTM**<br />
+**Bidirectional LSTM**<br />
+**GRU**<br />
 
 # Libraries
 **Tensorflow**
@@ -14,7 +14,7 @@ This Project Using Tensorflow To Generating Text
 **re**
 
 # Files
-**Text Nomalization (Arabic & English):
+**Text Nomalization (Arabic & English):**
  *Contraction Expand*
  *Remove Punctuations*
  *Remove Single Letter**
