@@ -30,7 +30,7 @@ def train_arguments(epochs):
     per_device_train_batch_size=2,
     save_steps=10_000,
     save_total_limit=2,
-    use_mps_device=True,
+
 )
     return training_args
 
