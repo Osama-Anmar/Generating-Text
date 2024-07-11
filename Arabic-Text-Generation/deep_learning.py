@@ -9,9 +9,9 @@ def nlp_model_word(input_dim, output_dim, input_length, unit, model):
                 ])   
     return model
 
-def nlp_model_char(input_dim, output_dim, unit, model):
+def nlp_model_char(input_dim, output_dim, unit, model, input_length):
     model = tf.keras.models.Sequential([
-                tf.keras.layers.Embedding(input_dim=input_dim, output_dim=output_dim),
+                tf.keras.layers.Embedding(input_dim=input_dim, output_dim=output_dim, input_length=input_length),
                 model,
                 tf.keras.layers.Dense(unit, activation='softmax')
                 ])   

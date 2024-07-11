@@ -4,7 +4,7 @@ def remove_arabic_tatweel(text):
                 return text
 
 def remove_punctuations(text):     
-        Punctuation  = '''“`؛،؟.,-!"\'(),-./:;?[–]^_`{}\\”'''
+        Punctuation  = '''“`؛،؟.,-!"\'(),-./:;?[–]^_`{}\\-”'''
         for punctuation in Punctuation:
                 text = text.replace(punctuation, ' ')
         return text

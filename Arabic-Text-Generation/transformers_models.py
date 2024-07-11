@@ -1,7 +1,6 @@
 import torch
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, TextDataset, DataCollatorForLanguageModeling, Trainer, TrainingArguments
 
-
 def load_dataset(file_path, tokenizer, block_size=128):
     return TextDataset(
         tokenizer=tokenizer,
@@ -24,27 +23,27 @@ def transformes_model(model_name_):
 
 def train_arguments(epochs):
     training_args = TrainingArguments(
-    output_dir='./results',
-    overwrite_output_dir=True,
-    num_train_epochs=epochs,
-    per_device_train_batch_size=2,
-    save_steps=10_000,
-    save_total_limit=2,
-
-)
+        output_dir='./results',
+        overwrite_output_dir=True,
+        num_train_epochs=epochs,
+        per_device_train_batch_size=2,
+        save_steps=10_000,
+        save_total_limit=2,
+    )
     return training_args
 
 def training_(model, training_args, collator, data):
     trainer = Trainer(
-    model=model,
-    args=training_args,
-    data_collator=collator,
-    train_dataset=data,
-)
+        model=model,
+        args=training_args,
+        data_collator=collator,
+        train_dataset=data,
+    )
     trainer.train()
 
 def save_model_tokenizer(model, tokenizer):
-    return model.save_pretrained('./fine_tuned_gpt2'), tokenizer.save_pretrained('./fine_tuned_gpt2')
+    model.save_pretrained('./fine_tuned_gpt2')
+    tokenizer.save_pretrained('./fine_tuned_gpt2')
 
 def transformer_testing(input_text, tokenizer, model, text_normalization):
     input_text = text_normalization(input_text)
