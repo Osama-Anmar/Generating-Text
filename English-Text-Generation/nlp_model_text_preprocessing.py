@@ -1,22 +1,22 @@
-import pandas as pd
 import numpy as np
 
+
 def index_the_words(Corpus):
-    df = pd.DataFrame(Corpus) 
-    words = set()
-    for word in df[0].str.split(): 
-        words.update(word) 
+    words = set() 
+    for text in Corpus:
+        for word in text.split():
+            words.add(word)
     words = sorted(words)
     all_words = len(words) 
     words_to_index = {word:index for index, word in enumerate(words)}
     index_to_word = {word:index for word, index in enumerate(words)}
-    words_to_index['OOV'] = all_words
-    index_to_word[all_words] = "OOV"
+    words_to_index['UNK'] = all_words
+    index_to_word[all_words] = "UNK"
     return all_words, words_to_index, index_to_word
 
 
 def text_to_sequence(word_index, text):
-    sequence_text = [word_index[word] if word in word_index else word_index["OOV"] for word in text.split()]
+    sequence_text = [word_index[word] if word in word_index else word_index["UNK"] for word in text.split()]
     return sequence_text
 
 
@@ -47,10 +47,18 @@ def index_the_char(Corpus):
     all_chars = len(chars) 
     chars_index = {char:index for index, char in enumerate(chars)}
     index_chars = {char:index for char, index in enumerate(chars)}
-    chars_index['OOV'] = all_chars
-    index_chars[all_chars] = "OOV"
+    chars_index['UNK'] = all_chars
+    index_chars[all_chars] = "UNK"
     return all_chars, chars_index, index_chars
 
 def text_to_sequence_char(chars_index, text):
-     sequence_text_char = [[chars_index[char] for char in sentences] for sentences in text]
+     sequence_text_char = [[chars_index[char] if char in chars_index else chars_index["UNK"] for char in sentences] for sentences in text]
      return sequence_text_char
+
+def char_sequence_to_text(index_chars, sequence, all_chars):
+     char_seq_to_text_ = [index_chars[index] if index in index_chars else index_chars[all_chars] for index in sequence]
+     return "".join(char_seq_to_text_)
+
+def word_sequence_to_text(index_to_words, sequence, all_words):
+     word_sequence_to_text_ = [index_to_words[index] if index in index_to_words else index_to_words[all_words] for index in sequence]
+     return " ".join(word_sequence_to_text_)

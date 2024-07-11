@@ -1,7 +1,6 @@
 import torch
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, TextDataset, DataCollatorForLanguageModeling, Trainer, TrainingArguments
 
-
 def load_dataset(file_path, tokenizer, block_size=128):
     return TextDataset(
         tokenizer=tokenizer,
@@ -30,7 +29,7 @@ def train_arguments(epochs):
     per_device_train_batch_size=2,
     save_steps=10_000,
     save_total_limit=2,
-    use_mps_device=True,
+
 )
     return training_args
 
