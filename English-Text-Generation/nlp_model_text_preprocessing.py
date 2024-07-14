@@ -44,7 +44,7 @@ def index_the_char(Corpus):
     for char in Corpus:
         chars.update(char)
     chars = sorted(chars)
-    all_chars = len(chars) 
+    all_chars = len(chars)
     chars_index = {char:index for index, char in enumerate(chars)}
     index_chars = {char:index for char, index in enumerate(chars)}
     chars_index['UNK'] = all_chars

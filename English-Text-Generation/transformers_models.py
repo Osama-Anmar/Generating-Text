@@ -46,8 +46,10 @@ def save_model_tokenizer(model, tokenizer):
     return model.save_pretrained('./fine_tuned_gpt2'), tokenizer.save_pretrained('./fine_tuned_gpt2')
 
 def transformer_testing(input_text, tokenizer, model, text_normalization):
+    device = torch.device("cpu")
+    model.to(device)
     input_text = text_normalization(input_text)
-    input_ids = tokenizer.encode(input_text, return_tensors='pt')
-    output = model.generate(input_ids, max_length=100, num_return_sequences=1)
+    input_ids = tokenizer(input_text, return_tensors='pt').to(device)
+    output = model.generate(**input_ids, max_length=100, pad_token_id=tokenizer.eos_token_id)
     generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
-    print(generated_text)
+    return generated_text
