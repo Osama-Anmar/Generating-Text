@@ -23,31 +23,33 @@ def transformes_model(model_name_):
 
 def train_arguments(epochs):
     training_args = TrainingArguments(
-        output_dir='./results',
-        overwrite_output_dir=True,
-        num_train_epochs=epochs,
-        per_device_train_batch_size=2,
-        save_steps=10_000,
-        save_total_limit=2,
-    )
+    output_dir='./results',
+    overwrite_output_dir=True,
+    num_train_epochs=epochs,
+    per_device_train_batch_size=2,
+    save_steps=10_000,
+    save_total_limit=2,
+
+)
     return training_args
 
 def training_(model, training_args, collator, data):
     trainer = Trainer(
-        model=model,
-        args=training_args,
-        data_collator=collator,
-        train_dataset=data,
-    )
+    model=model,
+    args=training_args,
+    data_collator=collator,
+    train_dataset=data,
+)
     trainer.train()
 
 def save_model_tokenizer(model, tokenizer):
-    model.save_pretrained('./fine_tuned_gpt2')
-    tokenizer.save_pretrained('./fine_tuned_gpt2')
+    return model.save_pretrained('./fine_tuned_gpt2'), tokenizer.save_pretrained('./fine_tuned_gpt2')
 
 def transformer_testing(input_text, tokenizer, model, text_normalization):
+    device = torch.device("cpu")
+    model.to(device)
     input_text = text_normalization(input_text)
-    input_ids = tokenizer.encode(input_text, return_tensors='pt')
-    output = model.generate(input_ids, max_length=100, num_return_sequences=1)
+    input_ids = tokenizer(input_text, return_tensors='pt').to(device)
+    output = model.generate(**input_ids, max_length=100, pad_token_id=tokenizer.eos_token_id)
     generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
-    print(generated_text)
+    return generated_text

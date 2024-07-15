@@ -4,7 +4,7 @@ def remove_arabic_tatweel(text):
                 return text
 
 def remove_punctuations(text):     
-        Punctuation  = '''“`؛،؟.,-!"\'(),-./:;?[–]^_`{}\\-”'''
+        Punctuation  = '''“`؛،؟.,-!"\'(),-./:;?[–]^_`{}\\”—'''
         for punctuation in Punctuation:
                 text = text.replace(punctuation, ' ')
         return text
@@ -17,6 +17,7 @@ def remove_unicode_and_special_character(text):
 
 def text_normalization(text):
         text = re.sub("\x7f", "", text)
+        text = re.sub("\t", " ", text)
         text = remove_unicode_and_special_character(text)
         text = remove_arabic_tatweel(text)
         text = re.sub('[a-zA-Z]', '', text)

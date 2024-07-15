@@ -26,11 +26,11 @@ def model_compile_char(model, optimizer, loss):
     return model.compile(optimizer=optimizer,
                          loss=loss)
     
-def model_fit(model, Data, Label, epochs, early_stop, batch_size):       
+def model_fit(model, Data, Label, epochs, early_stop, checkpoint,batch_size):       
     history = model.fit(Data, Label,
                         epochs=epochs,
                         batch_size=batch_size,
-                        callbacks=[early_stop])
+                        callbacks=[early_stop, checkpoint])
     return history
 
 def plot_word_model_change(history):
