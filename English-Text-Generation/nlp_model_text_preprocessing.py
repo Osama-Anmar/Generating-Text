@@ -8,11 +8,11 @@ def index_the_words(Corpus):
             words.add(word)
     words = sorted(words)
     all_words = len(words) 
-    words_to_index = {word:index for index, word in enumerate(words)}
-    index_to_word = {word:index for word, index in enumerate(words)}
-    words_to_index['UNK'] = all_words
-    index_to_word[all_words] = "UNK"
-    return all_words, words_to_index, index_to_word
+    words_to_index = {word:index+2 for index, word in enumerate(words)} 
+    index_to_word = {word:index+2 for word, index in enumerate(words)}
+    words_to_index['UNK'] = 1
+    index_to_word[1] = "UNK"
+    return all_words + 1, words_to_index, index_to_word
 
 
 def text_to_sequence(word_index, text):
@@ -45,20 +45,20 @@ def index_the_char(Corpus):
         chars.update(char)
     chars = sorted(chars)
     all_chars = len(chars)
-    chars_index = {char:index for index, char in enumerate(chars)}
-    index_chars = {char:index for char, index in enumerate(chars)}
-    chars_index['UNK'] = all_chars
-    index_chars[all_chars] = "UNK"
-    return all_chars, chars_index, index_chars
+    chars_index = {char:index + 2 for index, char in enumerate(chars)}
+    index_chars = {char:index + 2 for char, index in enumerate(chars)}
+    chars_index['UNK'] = 1
+    index_chars[1] = "UNK"
+    return all_chars + 1, chars_index, index_chars
 
 def text_to_sequence_char(chars_index, text):
      sequence_text_char = [[chars_index[char] if char in chars_index else chars_index["UNK"] for char in sentences] for sentences in text]
      return sequence_text_char
 
-def char_sequence_to_text(index_chars, sequence, all_chars):
-     char_seq_to_text_ = [index_chars[index] if index in index_chars else index_chars[all_chars] for index in sequence]
+def char_sequence_to_text(index_chars, sequence):
+     char_seq_to_text_ = [index_chars[index] if index in index_chars else index_chars[1] for index in sequence]
      return "".join(char_seq_to_text_)
 
-def word_sequence_to_text(index_to_words, sequence, all_words):
-     word_sequence_to_text_ = [index_to_words[index] if index in index_to_words else index_to_words[all_words] for index in sequence]
+def word_sequence_to_text(index_to_words, sequence):
+     word_sequence_to_text_ = [index_to_words[index] if index in index_to_words else index_to_words[1] for index in sequence]
      return " ".join(word_sequence_to_text_)
