@@ -32,8 +32,25 @@ Several models have been explored for text generation, including:
 The model is trained on the preprocessed text data using a sequence-to-sequence approach. The training process involves tuning hyperparameters such as learning rate, batch size, and the number of epochs to achieve the best performance.
 
 # Installation
-'''bash
+```bash
 git clone https://github.com/Osama-Anmar/Generating-Text.git
 cd Generating-Text
 pip install -r requirements.txt
-'''
+```
+# Usage
+To generate text using the trained model, follow these steps:
+
+* 1-Load the trained model.
+* 2-Provide a starting sequence or prompt.
+* 3-Generate text based on the input sequence.
+
+```bash
+from model_testing import model_testing_word
+model_testing_word(text = 'The only things', number_of_words = 50, text_normalization = text_normalization, text_to_sequence = text_to_sequence, words_index = words_index, pad_sequences = pad_sequences, checkpoint_filepath='English_GRU1_model_checkpoint.h5', max_length = max_length_word, index_to_words = index_to_words, word_sequence_to_text = word_sequence_to_text, all_words=all_words)
+```
+# Contributing
+Contributions are welcome! Please feel free to submit a pull request or open an issue if you have suggestions or improvements.
+
+# License
+This project is licensed under the MIT License. See the LICENSE file for more details.
+
