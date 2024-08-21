@@ -1,25 +1,8 @@
 # Generating-Text
-This Project Using Tensorflow To Generating Text
-
-# Technique Used
-**N-Grams**<br />
-**LSTM**<br />
-**Bidirectional LSTM**<br />
-**GRU**<br />
-
-# Libraries
-**Tensorflow**<br />
-**Matplolib**<br />
-**Numpy**<br />
-**re**<br />
+This repository contains a project focused on text generation using deep learning models. The primary goal is to generate coherent and contextually relevant text based on a given input.
 
 # Files
-**Text Nomalization (Arabic & English):**<br />
- *Contraction Expand*<br />
- *Remove Punctuations*<br />
- *Remove Single Letter*<br />
- *Remove Some Special Character And Unicode*<br />
-
+* deep_learning.py
  
 
 
