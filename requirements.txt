@@ -1,0 +1,7 @@
+tensorflow == 2.15.1
+scikit-learn
+matplotlib
+numpy
+pandas
+torch
+transformers
